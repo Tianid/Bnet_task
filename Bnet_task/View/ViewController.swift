@@ -34,8 +34,6 @@ class ViewController: UIViewController {
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.register(UINib(nibName: "MyTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-//        NetworkManager.shared.getNewSession()
-//        NetworkManager.shared.addEntry(text: "some text")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,7 +69,6 @@ class ViewController: UIViewController {
             if let value = userDefault.object(forKey: "session") as? String {
                 NetworkManager.shared.session = value
                 getEntries()
-                print(value)
             } else {
                 NetworkManager.shared.getNewSession { [weak self] (session) in
                     guard let session = session else { return }

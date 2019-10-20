@@ -35,7 +35,7 @@ class NetworkManager {
     }
     
     
-    func getRequest() -> URLRequest {
+    private func getRequest() -> URLRequest {
         let component = URLComponents(string: myAPI)
         let url = component?.url
         var urlRequest = URLRequest(url: url!)
@@ -47,12 +47,11 @@ class NetworkManager {
     
     func addEntry(text: String) {
         let component = URLComponents(string: myAPI)
-
-        
         let url = component?.url
         var urlRequest = URLRequest(url: url!)
         urlRequest.setValue("\(token)", forHTTPHeaderField: "token")
         urlRequest.httpMethod = "POST"
+        
         let paramString = "a=add_entry&session=\(String(describing: NetworkManager.shared.session!))&body=\(text)"
         urlRequest.httpBody = paramString.data(using: String.Encoding.utf8)
         URLSession.shared.dataTask(with: urlRequest) {(data, response, error) in
@@ -77,13 +76,7 @@ class NetworkManager {
             } catch {
                 complitionHandler(false,error)
             }
-            
         }.resume()
-    }
-    
-    
-    func addLocalAntry(entry: Entry) {
-        self.allEntries?.append(entry)
     }
 }
 

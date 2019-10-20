@@ -11,13 +11,7 @@ import UIKit
 class AddNewEntryViewController: UIViewController {
     
     var updateTable: (() -> ())?
-
     @IBOutlet weak var textView: UITextView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
         NetworkManager.shared.addEntry(text: textView.text)
@@ -31,8 +25,12 @@ class AddNewEntryViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    
     private func showToast() {
-        
         let alert = UIAlertController(title: nil, message: "Saved", preferredStyle: .alert)
         alert.view.alpha = 0
         alert.view.layer.cornerRadius = 15

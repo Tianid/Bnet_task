@@ -11,4 +11,3 @@ import Foundation
 
 public let token = "HYAiHJV-a1-tEA2th4"
 public let myAPI = "https://bnet.i-partner.ru/testAPI/"
-//HYAiHJV-a1-tEA2th4

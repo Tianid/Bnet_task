@@ -9,13 +9,12 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
+    
+    var entry: Entry?
 
     @IBOutlet weak var updatingDateLAbel: UILabel!
     @IBOutlet weak var entryBodyTextView: UITextView!
     @IBOutlet weak var creatingDateLabel: UILabel!
-    
-    
-    var entry: Entry?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +24,9 @@ class DetailsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         entryBodyTextView.scrollRangeToVisible(NSRange(location:0, length:0))
-
     }
     
-    func setup() {
+    private func setup() {
         entryBodyTextView.text = entry?.body
         updatingDateLAbel.text = getFormatedDate(entryDate: Int(entry!.dm)!)
         creatingDateLabel.text = getFormatedDate(entryDate: Int(entry!.da)!)
